@@ -1,6 +1,7 @@
 #include <stdio.h> 
 /**
- *TODO: Description
+ This utility search (case-sensitive) for a keyword in a given file(s). 
+ If the keyword was found in the line, it will print out that line. 
  **/
 
 
@@ -21,7 +22,7 @@ int checkForKeyword(char * line, size_t lineLength,
 		    char * keyword, size_t keywordLength){
 	
 	size_t i, j;
-
+	
 	for (i = 0; i < lineLength - keywordLength; i++) {
 		for (j = i; j < i + keywordLength; j++) {
 			
@@ -41,11 +42,14 @@ int checkForKeyword(char * line, size_t lineLength,
 // exists in it
 int searchInFile(FILE * searchFile, char * keyword, size_t keywordLength){
 
+	// check if search file exists
 	if(searchFile == NULL){
 		printf("Couldn't find file \n");
 		return -1;
 	}
 
+	// read each line and store in lineptr
+	// check `man getline` for more info
 	char * lineptr = NULL; 
 	size_t n = 0;
 	ssize_t readChars; 
@@ -86,7 +90,7 @@ int main(int argc, char *argv[]){
 	return 0;	
 	}
 
-
+	// if file name was given, open stream for each file and apply searchInFile routine
 	if(argc > 2) {
 		for(short int i = 2; i < argc; i++){
 			FILE * searchFile = fopen(argv[i], "r");
