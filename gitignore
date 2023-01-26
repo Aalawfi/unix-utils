@@ -1,2 +1,4 @@
 ./wcat-util/wcat
 ./wcat-util/*.o
+./wgrep-util/*.o
+./wgrep-util/wgrep
