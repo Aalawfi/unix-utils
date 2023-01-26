@@ -36,6 +36,7 @@ int checkForKeyword(char * line, size_t lineLength,
         return 0;
 
 }
+
 // Opens a file, read it line by line, and print out the line if a given keyword
 // exists in it
 int searchInFile(FILE * searchFile, char * keyword, size_t keywordLength){
@@ -85,12 +86,13 @@ int main(int argc, char *argv[]){
 	return 0;	
 	}
 
-	
-	// This works on single file, 
-	// figure out how to make it work on multiple files
-	FILE * searchFile = fopen(argv[2], "r");
-	searchInFile(searchFile, argv[1], keywordLength);
-	fclose(searchFile);
-	return 0;
 
+	if(argc > 2) {
+		for(short int i = 2; i < argc; i++){
+			FILE * searchFile = fopen(argv[i], "r");
+			searchInFile(searchFile, argv[1], keywordLength);
+			fclose(searchFile);
+		}
+	}
+	return 0;
 }
