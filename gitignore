@@ -2,3 +2,6 @@
 ./wcat-util/*.o
 ./wgrep-util/*.o
 ./wgrep-util/wgrep
+./wzip-util/*.0
+./wzip-util/*.zip
+./wzip-util/wzip
